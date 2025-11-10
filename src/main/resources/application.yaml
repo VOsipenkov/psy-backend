@@ -1,3 +1,6 @@
 spring:
   application:
     name: psy
+
+server:
+  port: 8081
