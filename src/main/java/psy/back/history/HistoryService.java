@@ -10,8 +10,8 @@ import java.util.Map;
 @Service
 public class HistoryService {
 
-    public List<Map<String, Object>> getHistoryById(Long id) {
-        log.info("Fetching mock history data for id: {}", id);
+    public List<Map<String, Object>> getHistory() {
+        log.info("Fetching mock history data");
 
         return List.of(
                 Map.of(

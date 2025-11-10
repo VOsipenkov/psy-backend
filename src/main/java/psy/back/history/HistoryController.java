@@ -11,13 +11,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/history")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 public class HistoryController {
 
     private final HistoryService historyService;
 
-    @GetMapping("/{id}")
-    public List<Map<String, Object>> getHistory(@PathVariable("id") Long id) {
-        log.info("Received request for history with id: {}", id);
-        return historyService.getHistoryById(id);
+    @GetMapping
+    public List<Map<String, Object>> getHistory() {
+        log.info("Received request for history");
+        return historyService.getHistory();
     }
 }
