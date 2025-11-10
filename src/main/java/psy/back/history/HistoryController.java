@@ -11,7 +11,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/history")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
 public class HistoryController {
 
     private final HistoryService historyService;
