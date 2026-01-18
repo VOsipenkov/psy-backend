@@ -9,15 +9,15 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/history")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class HistoryController {
 
     private final HistoryService historyService;
 
-    @GetMapping
-    public List<Map<String, Object>> getHistory() {
-        log.info("Received request for history");
+    @GetMapping("/history/{id}")
+    public List<Map<String, Object>> getHistory(@PathVariable String id) {
+        log.info("Received request for history for id {}", id);
         return historyService.getHistory();
     }
 }
