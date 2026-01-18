@@ -5,13 +5,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @Service
 public class HistoryService {
 
-    public List<Map<String, Object>> getHistory() {
-        log.info("Fetching mock history data");
+    public List<Map<String, Object>> getHistory(UUID userId, UUID chatId) {
+        log.info("Fetching mock history data userId {}, chatId {} ", userId, chatId);
 
         return List.of(
                 Map.of(
