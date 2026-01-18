@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @RestController
-public class ReceiveMessageController {
+public class MessageController {
+
+    private final MessageService messageService;
 
     @PostMapping("/send-message")
-    public ResponseEntity<String> handleMessage(@RequestBody ReceiveMessage receiveMessage) {
-        log.info("Received message {}", receiveMessage.getText());
+    public ResponseEntity<String> handleMessage(@RequestBody Message message) {
+        messageService.handleMessage(message);
         return ResponseEntity.ok("ok");
     }
 }

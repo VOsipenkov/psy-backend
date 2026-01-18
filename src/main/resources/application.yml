@@ -1,6 +1,8 @@
 spring:
   application:
     name: psy
+  profiles:
+    active: h2
   ai:
     ollama:
       base-url: http://localhost:11431
