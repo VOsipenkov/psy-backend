@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 public class MessageService {
     private MessageRepository messageRepository;
     private MessageMapper messageMapper;
-
     public String handleMessage(Message message) {
         log.info("Received message {}", message.getText());
         var entity = messageMapper.toEntity(message);

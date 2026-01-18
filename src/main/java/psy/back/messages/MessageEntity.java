@@ -3,8 +3,8 @@ package psy.back.messages;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import psy.back.chats.Chat;
-import psy.back.users.User;
+import psy.back.chats.ChatEntity;
+import psy.back.users.UserEntity;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
@@ -20,10 +20,10 @@ public class MessageEntity {
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User userId;
+    private UserEntity userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Chat chatId;
+    private ChatEntity chatId;
 
     @Column(name = "text", nullable = false)
     private String text;
