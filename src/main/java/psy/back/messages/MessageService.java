@@ -3,13 +3,17 @@ package psy.back.messages;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import psy.back.chats.ChatRepository;
 import psy.back.chats.ChatService;
+import psy.back.users.UserRepository;
 
 @Slf4j
 @RequiredArgsConstructor
 @Component
 public class MessageService {
     private MessageRepository messageRepository;
+    private UserRepository userRepository;
+    private ChatRepository chatRepository;
     private ChatService chatService;
     private MessageMapper messageMapper;
 
@@ -23,6 +27,8 @@ public class MessageService {
 
         // 2. Сохраняем сообщение
         var entity = messageMapper.toEntity(message);
+        entity.setUser(userRepository.getReferenceById(message.getUserId()));
+        entity.setChat(chatRepository.getReferenceById(chatId));
         messageRepository.save(entity);
         return message.getText();
     }

@@ -22,8 +22,10 @@ public class ChatEntity {
     private UUID id;
     @Column(nullable = false)
     private String topic;
+    
     @Column(name = "user_id")
     private UUID userId;
+
     @Column(name = "created_at")
     @CreationTimestamp
     private ZonedDateTime createdAt;

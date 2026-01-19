@@ -20,10 +20,10 @@ public class MessageEntity {
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private UserEntity userId;
+    private UserEntity user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private ChatEntity chatId;
+    private ChatEntity chat;
 
     @Column(name = "text", nullable = false)
     private String text;
