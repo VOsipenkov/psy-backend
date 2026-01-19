@@ -8,7 +8,9 @@ import org.mapstruct.ReportingPolicy;
 
 import java.nio.charset.StandardCharsets;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, imports = {Base64.class, StandardCharsets.class})
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        imports = {StandardCharsets.class},
+        componentModel = "spring")
 public interface UserMapper {
 
     @Mapping(target = "login", source = "login")

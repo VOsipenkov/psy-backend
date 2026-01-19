@@ -3,7 +3,7 @@ package psy.back.messages;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface MessageMapper {
 
     @Mapping(target = "id", expression = "java(java.util.UUID.randomUUID())")
