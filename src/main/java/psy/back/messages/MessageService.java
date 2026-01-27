@@ -11,11 +11,11 @@ import psy.back.users.UserRepository;
 @RequiredArgsConstructor
 @Component
 public class MessageService {
-    private MessageRepository messageRepository;
-    private UserRepository userRepository;
-    private ChatRepository chatRepository;
-    private ChatService chatService;
-    private MessageMapper messageMapper;
+    private final MessageRepository messageRepository;
+    private final UserRepository userRepository;
+    private final ChatRepository chatRepository;
+    private final ChatService chatService;
+    private final MessageMapper messageMapper;
 
     public String handleMessage(Message message) {
         log.info("Received message {}, user login {}, chatId {}",
