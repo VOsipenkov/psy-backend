@@ -6,7 +6,6 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface MessageMapper {
 
-    @Mapping(target = "id", expression = "java(java.util.UUID.randomUUID())")
     @Mapping(target = "text", source = "text")
     @Mapping(target = "user", ignore = true) // заполним в сервисе
     @Mapping(target = "chat", ignore = true) // заполним в сервисе

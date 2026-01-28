@@ -17,7 +17,13 @@ import java.util.UUID;
 @Setter
 public class MessageEntity {
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_seq")
+    @SequenceGenerator(
+            name = "message_seq",
+            sequenceName = "message_seq",
+            allocationSize = 1
+    )
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private UserEntity user;
