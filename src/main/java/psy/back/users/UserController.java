@@ -46,6 +46,6 @@ public class UserController {
     public ResponseEntity<String> register(
             @Parameter(name = "Информация по пользователю", required = true) @RequestBody User user) {
         userService.add(user);
-        return ResponseEntity.ok("ok");
+        return ResponseEntity.ok("000e8400-e29b-41d3-a716-446655440000");
     }
 }
