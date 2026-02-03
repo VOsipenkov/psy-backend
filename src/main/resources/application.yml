@@ -15,3 +15,5 @@ server:
 service:
   chat:
     mockEnabled: true
+  history:
+    mockEnabled: true

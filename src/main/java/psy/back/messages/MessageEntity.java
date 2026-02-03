@@ -7,7 +7,6 @@ import psy.back.chats.ChatEntity;
 import psy.back.users.UserEntity;
 
 import java.time.ZonedDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "chat_messages")
@@ -37,4 +36,7 @@ public class MessageEntity {
     @Column(name = "created_at", updatable = false, nullable = false)
     @CreationTimestamp
     private ZonedDateTime createdAt;
+
+    @Column(name = "is_user", updatable = false, nullable = false)
+    private Boolean isUser;
 }
