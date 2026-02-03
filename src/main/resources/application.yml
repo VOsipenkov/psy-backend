@@ -3,6 +3,11 @@ spring:
     name: psy
   profiles:
     active: h2
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
   ai:
     ollama:
       base-url: http://localhost:11431
