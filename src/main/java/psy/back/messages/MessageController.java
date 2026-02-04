@@ -58,7 +58,7 @@ public class MessageController {
                     )
             )
     )
-    public ResponseEntity<List<Map<String, Object>>> history(
+    public ResponseEntity<List<Message>> history(
             @Parameter(name = "Идентификатор пользователя", required = true) @PathVariable UUID userId,
             @Parameter(name = "Идентификатор чатика", required = true) @PathVariable UUID chatId) {
         return ResponseEntity.ok(historyService.getHistory(userId, chatId));
