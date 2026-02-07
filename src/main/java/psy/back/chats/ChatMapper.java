@@ -8,7 +8,6 @@ import org.mapstruct.ReportingPolicy;
 public interface ChatMapper {
     ChatEntity toEntity(Chat chat);
 
-    @Mapping(source = "topic", target = "name")
     @Mapping(source = "id", target = "chatId")
     @Mapping(source = "userId", target = "userId")
     Chat toDto(ChatEntity entity);

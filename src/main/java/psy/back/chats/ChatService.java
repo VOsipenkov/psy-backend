@@ -27,13 +27,11 @@ public class ChatService {
      Каждый раз при работе с чатом вызываем метод
      если чат не найдем - создадим его
      */
-    public UUID start(String topic, UUID chatId, UUID userId, String login) {
-        if (isNull(chatId) && chatRepository.findFirstByTopic(topic).isEmpty()) {
-            return create(null, userId);
+    public UUID start(UUID chatId, UUID userId) {
+        if (isNull(chatId)) {
+            return create(userId);
         }
-        return nonNull(chatId) ?
-                chatRepository.findById(chatId).get().getId() :
-                chatRepository.findFirstByTopic(topic).get().getId();
+        return chatRepository.findById(chatId).get().getId();
     }
 
     public List<Chat> getAll(UUID userId) {
@@ -60,10 +58,9 @@ public class ChatService {
         return chatEntities.stream().map(chatMapper::toDto).collect(Collectors.toList());
     }
 
-    private UUID create(String topic, UUID userId) {
+    private UUID create(UUID userId) {
         var chat = ChatEntity.builder()
                 .userId(userId)
-                .topic(topic)
                 .build();
         var createdChat = chatRepository.save(chat);
         return createdChat.getId();

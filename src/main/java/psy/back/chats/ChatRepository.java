@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface ChatRepository extends JpaRepository<ChatEntity, UUID> {
-    Optional<ChatEntity> findFirstByTopic(String topic);
+    Optional<ChatEntity> findFirstById(UUID id);
 
     List<ChatEntity> findByUserId(UUID userId);
 }

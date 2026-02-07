@@ -20,7 +20,8 @@ import java.util.stream.Collectors;
 public class HistoryService {
     @Value("${service.history.mockEnabled:false}")
     private Boolean mockEnabled;
-    private static final UUID DEFAULT_UUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+    private static final UUID USER_ID = UUID.fromString("00000000-0000-0000-0000-000000001111");
+    private static final UUID CHAT_ID = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
     private final MessageRepository messageRepository;
     private final MessageMapper messageMapper;
@@ -28,8 +29,8 @@ public class HistoryService {
     public List<Message> getHistory(UUID userId, UUID chatId) {
         log.info("Fetching mock history data userId {}, chatId {} ", userId, chatId);
         if (mockEnabled) {
-            userId = DEFAULT_UUID;
-            chatId = DEFAULT_UUID;
+            userId = USER_ID;
+            chatId = CHAT_ID;
         }
         List<MessageEntity> messages = messageRepository.getHistory(userId, chatId);
         return messages.stream().map(messageMapper::toDto).collect(Collectors.toList());

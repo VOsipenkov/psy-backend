@@ -3,6 +3,7 @@ package psy.back.messages;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import psy.back.chats.ChatRepository;
 import psy.back.chats.ChatService;
 import psy.back.users.UserRepository;
@@ -17,19 +18,19 @@ public class MessageService {
     private final ChatService chatService;
     private final MessageMapper messageMapper;
 
+    @Transactional
     public String handleMessage(Message message) {
         log.info("Received message {}, user login {}, chatId {}",
                 message.getText(), message.getLogin(), message.getChatId());
 
         // 1. Запускаем/продолжаем чат
-        var chatId = chatService.start(
-                message.getTopic(), message.getChatId(), message.getUserId(), message.getLogin());
+        var chatId = chatService.start(message.getChatId(), message.getUserId());
 
         // 2. Сохраняем сообщение
-        var entity = messageMapper.toEntity(message);
-        entity.setUser(userRepository.getReferenceById(message.getUserId()));
-        entity.setChat(chatRepository.getReferenceById(chatId));
-        messageRepository.save(entity);
+        var messageEntity = messageMapper.toEntity(message);
+        messageEntity.setUser(userRepository.findById(message.getUserId()).get());
+        messageEntity.setChat(chatRepository.findById(chatId).get());
+        messageRepository.save(messageEntity);
         return message.getText();
     }
 }

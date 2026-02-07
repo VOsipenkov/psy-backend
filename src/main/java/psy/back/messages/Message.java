@@ -17,9 +17,6 @@ public class Message {
     @Schema(description = "Индетификатор пользователя", example = "550e8400-e29b-41d3-a716-446655440000")
     private UUID userId;
 
-    @Schema(description = "Тема сообщения", example = "Унитаз")
-    private String topic;
-
     @Schema(description = "Индетификатор чата", example = "550e8400-e29b-41d3-a716-446655440000")
     private UUID chatId;
 

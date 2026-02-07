@@ -49,7 +49,7 @@ public class MessageServiceTest {
         var resource = resourceLoader.getResource("classpath:message.json");
         var json = new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
         Message message = objectMapper.readValue(json, Message.class);
-        when(chatService.start(anyString(), any(), any(), anyString())).thenReturn(UUID.randomUUID());
+        when(chatService.start(any(), any())).thenReturn(UUID.randomUUID());
         when(userRepository.getReferenceById(any())).thenReturn(new UserEntity());
         when(chatRepository.getReferenceById(any())).thenReturn(new ChatEntity());
         when(messageRepository.save(any())).thenReturn(null);

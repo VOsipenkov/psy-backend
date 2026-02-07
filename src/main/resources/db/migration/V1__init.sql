@@ -1,4 +1,4 @@
-create table chat (id uuid not null, created_at timestamp(6) with time zone, topic varchar(255) not null, user_id uuid, primary key (id));
+create table chat (id uuid not null, created_at timestamp(6) with time zone, user_id uuid, primary key (id));
 create table chat_messages (id bigint not null, created_at timestamp(6) with time zone not null, is_user boolean not null, text varchar(255) not null, chat_id uuid, user_id uuid, primary key (id));
 create table users (id uuid not null, login varchar(255) not null, password varchar(255), primary key (id));
 create sequence message_seq start with 1 increment by 1;

@@ -20,8 +20,6 @@ import java.util.UUID;
 public class ChatEntity {
     @Id
     private UUID id;
-    @Column(nullable = false)
-    private String topic;
     
     @Column(name = "user_id")
     private UUID userId;
