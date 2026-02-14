@@ -22,4 +22,7 @@ public class Message {
 
     @Schema(description = "Текст сообщения", example = "Приснился унитаз")
     private String text;
+
+    @Schema(description = "Признак что сообщение отправлено пользователем", example = "Здравствуйте")
+    private Boolean isUser;
 }

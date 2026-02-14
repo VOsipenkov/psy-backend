@@ -18,5 +18,6 @@ public interface MessageMapper {
     @Mapping(target = "userId", source = "user.id")
     @Mapping(target = "chatId", source = "chat.id")
     @Mapping(target = "login", ignore = true)
+    @Mapping(target = "isUser", source = "isUser")
     Message toDto(MessageEntity record);
 }
