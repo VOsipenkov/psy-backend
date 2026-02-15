@@ -8,12 +8,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import psy.back.history.HistoryService;
 
 @RestController
 @RequestMapping("/api")
@@ -22,6 +22,7 @@ import psy.back.history.HistoryService;
 public class UserController {
 
     private final UserService userService;
+
     @PostMapping("/register")
     @Operation(summary = "Регистрация пользователя",
             description = "Регистрирует нового пользователя в системе")
@@ -45,7 +46,37 @@ public class UserController {
     })
     public ResponseEntity<String> register(
             @Parameter(name = "Информация по пользователю", required = true) @RequestBody User user) {
-        userService.add(user);
+        userService.register(user);
         return ResponseEntity.ok("000e8400-e29b-41d3-a716-446655440000");
+    }
+
+    @PostMapping("/login")
+    @Operation(description = "Логин пользователя",
+            summary = "Аутентификация и получение JWT токена")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Пароль подошел и отправлен JWT токен",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = String.class)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Пароль не подошел",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = String.class)
+                    )
+            )
+    })
+    public ResponseEntity<String> login(
+            @Parameter(name = "Информация по пользователю", required = true) @RequestBody User user) {
+        var isSuccess = userService.login(user);
+        if (isSuccess) {
+            return ResponseEntity.ok("000e8400-e29b-41d3-a716-446655440000");
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 }
