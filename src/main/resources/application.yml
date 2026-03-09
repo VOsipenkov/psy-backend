@@ -10,9 +10,9 @@ spring:
     validate-on-migrate: true
   ai:
     ollama:
-      base-url: http://localhost:11431
-    chat:
-      model: gemma3:4b-it-q4_K_M
+      base-url: http://localhost:11434
+      chat:
+        model: qwen3:4b
 
 server:
   port: 8081

@@ -35,6 +35,7 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql' // Для PostgreSQL
 
 	implementation("org.springframework.ai:spring-ai-ollama:1.0.0-M6")
+	implementation("org.springframework.ai:spring-ai-ollama-spring-boot-starter:1.0.0-M6")
 
 	// Lombok (для @Slf4j, @Data, @RequiredArgsConstructor)
 	compileOnly 'org.projectlombok:lombok'
