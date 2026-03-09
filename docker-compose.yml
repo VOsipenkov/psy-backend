@@ -5,14 +5,14 @@ services:
     image: ollama/ollama
     container_name: ollama
     ports:
-      - "11431:11434"
+      - "11434:11434"
     volumes:
       - ./ollama:/root/.ollama
     entrypoint: >
       /bin/sh -c "
         ollama serve &
         sleep 2 &&
-        ollama pull gemma3:4b-it-q4_K_M &&
+        ollama pull qwen3:4b &&
         ollama pull mxbai-embed-large &&
         wait
       "
