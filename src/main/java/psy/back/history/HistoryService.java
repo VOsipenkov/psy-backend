@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class HistoryService {
     @Value("${service.history.mockEnabled:false}")
     private Boolean mockEnabled;
-    private static final UUID USER_ID = UUID.fromString("00000000-0000-0000-0000-000000001111");
+    private static final UUID USER_ID = UUID.fromString("000e8400-e29b-41d3-a716-446655440000");
     private static final UUID CHAT_ID = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
     private final MessageRepository messageRepository;

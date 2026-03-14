@@ -19,6 +19,6 @@ server:
 
 service:
   chat:
-    mockEnabled: true
+    mockEnabled: false
   history:
-    mockEnabled: true
+    mockEnabled: false

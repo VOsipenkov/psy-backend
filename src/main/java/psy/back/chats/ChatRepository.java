@@ -1,5 +1,6 @@
 package psy.back.chats;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +12,5 @@ import java.util.UUID;
 public interface ChatRepository extends JpaRepository<ChatEntity, UUID> {
     Optional<ChatEntity> findFirstById(UUID id);
 
-    List<ChatEntity> findByUserId(UUID userId);
+    List<ChatEntity> findByUserId(UUID userId, Sort sort);
 }
